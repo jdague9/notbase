@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "NotBase",
+  "description": "This extension warns you if another team member is currently using the NetBase account",
+  "version": "1.0",
+
+  "page_action": {
+    "default_icon": "netbase.png",
+    "default_title": "NotBase"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://app.netbase.com/*", "https://app.netbase.com/*"],
+
+      "js": ["libs/jquery-2.1.3.min.js", "notbase.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "declarativeContent",
+    "activeTab",
+    "https://app.netbase.com/",
+    "http://app.netbase.com/",
+    "https://ajax.googleapis.com/"
+  ]
+}
